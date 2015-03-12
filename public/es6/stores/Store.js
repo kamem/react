@@ -1,5 +1,6 @@
 import EventEmitter from 'EventEmitter';
 import {AppDispatcher} from 'dispatcher/AppDispatcher';
+import {Constants} from 'constants/Constants';
 
 class Store extends EventEmitter {
   constructor() {
@@ -7,11 +8,11 @@ class Store extends EventEmitter {
     this.photos = [];
   }
   photo_emit() {
-    this.emit('feach');
+    this.emit(Constants.TODO_FEACH);
   }
 
   photo_on(collback) {
-    this.on("feach", collback);
+    this.on(Constants.TODO_FEACH, collback);
   }
 
   updateItems(photos) {
@@ -27,9 +28,9 @@ class Store extends EventEmitter {
 export var PhotoStore = new Store();
 
 AppDispatcher.register((action) => {
-  if (action.actionType === 'feach') {
+  if (action.actionType === Constants.TODO_FEACH) {
     PhotoStore.photo_emit();
-  } else if (action.actionType === 'success') {
+  } else if (action.actionType === Constants.TODO_SUCCESS) {
     PhotoStore.updateItems(action.photos);
     PhotoStore.photo_emit();
   }

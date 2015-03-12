@@ -1,4 +1,4 @@
-define(["exports", "react", "EventEmitter", "Actions", "Store"], function (exports, _react, _EventEmitter, _Actions, _Store) {
+define(["exports", "react", "EventEmitter", "actions/Actions", "stores/Store"], function (exports, _react, _EventEmitter, _actionsActions, _storesStore) {
 	"use strict";
 
 	var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
@@ -7,8 +7,8 @@ define(["exports", "react", "EventEmitter", "Actions", "Store"], function (expor
 
 	var event = _interopRequire(_EventEmitter);
 
-	var PhotoActions = _Actions.PhotoActions;
-	var PhotoStore = _Store.PhotoStore;
+	var PhotoActions = _actionsActions.PhotoActions;
+	var PhotoStore = _storesStore.PhotoStore;
 
 	var Photos = React.createClass({
 		displayName: "Photos",

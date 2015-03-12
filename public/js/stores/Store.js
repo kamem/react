@@ -1,4 +1,4 @@
-define(["exports", "EventEmitter", "dispatcher/AppDispatcher"], function (exports, _EventEmitter2, _dispatcherAppDispatcher) {
+define(["exports", "EventEmitter", "dispatcher/AppDispatcher", "constants/Constants"], function (exports, _EventEmitter2, _dispatcherAppDispatcher, _constantsConstants) {
   "use strict";
 
   var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
@@ -12,6 +12,7 @@ define(["exports", "EventEmitter", "dispatcher/AppDispatcher"], function (export
   var EventEmitter = _interopRequire(_EventEmitter2);
 
   var AppDispatcher = _dispatcherAppDispatcher.AppDispatcher;
+  var Constants = _constantsConstants.Constants;
 
   var Store = (function (_EventEmitter) {
     function Store() {
@@ -26,12 +27,12 @@ define(["exports", "EventEmitter", "dispatcher/AppDispatcher"], function (export
     _createClass(Store, {
       photo_emit: {
         value: function photo_emit() {
-          this.emit("feach");
+          this.emit(Constants.TODO_FEACH);
         }
       },
       photo_on: {
         value: function photo_on(collback) {
-          this.on("feach", collback);
+          this.on(Constants.TODO_FEACH, collback);
         }
       },
       updateItems: {
@@ -55,9 +56,9 @@ define(["exports", "EventEmitter", "dispatcher/AppDispatcher"], function (export
   var PhotoStore = exports.PhotoStore = new Store();
 
   AppDispatcher.register(function (action) {
-    if (action.actionType === "feach") {
+    if (action.actionType === Constants.TODO_FEACH) {
       PhotoStore.photo_emit();
-    } else if (action.actionType === "success") {
+    } else if (action.actionType === Constants.TODO_SUCCESS) {
       PhotoStore.updateItems(action.photos);
       PhotoStore.photo_emit();
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import event from 'EventEmitter';
-import {PhotoActions} from 'Actions';
-import {PhotoStore} from 'Store';
+import {PhotoActions} from 'actions/Actions';
+import {PhotoStore} from 'stores/Store';
 
 var Photos = React.createClass({
 	getInitialState() {
@@ -12,14 +12,12 @@ var Photos = React.createClass({
 		PhotoActions.feach();
 	},
 
-
 	onClick() {
 		console.log(this.state.tag);
 	},
 	_changeState() {
 		this.setState(PhotoStore._getState());
 	},
-
 
 	render() {
 		var photos = this.state.photos.map((photo) => {
